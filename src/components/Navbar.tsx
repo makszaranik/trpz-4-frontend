@@ -1,0 +1,20 @@
+import React from 'react';
+import logo from '../assets/img.png';
+
+const Navbar: React.FC = () => {
+    return (
+        <div className="w-full bg-black shadow">
+            <div className="flex justify-between items-center px-4 py-2">
+                <img src={logo} alt="Logo" className="ml-52 h-8" />
+                <div className="flex items-center space-x-2">
+                    <a href="/login" className="mr-5 text-white text-decoration-underline">Login</a>
+                    <span>|</span>
+                    <a href="/register" className="mr-50 text-white text-decoration-underline">Register</a>
+                </div>
+            </div>
+
+        </div>
+    );
+};
+
+export default Navbar;
