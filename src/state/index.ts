@@ -1,11 +1,15 @@
 import {create} from "zustand/react";
+import { persist } from 'zustand/middleware'
 
-interface UserState {
+interface AuthState {
     token: string | null;
     setToken: (token: string) => void;
 }
 
-export const useUserStore = create<UserState>((set) => ({
-    token: null,
-    setToken: (token) => set({token})
-}))
+export const useAuthStore = create<AuthState>()(
+    persist((set) => ({
+            token: null,
+            setToken: (token) => set({ token }),
+        }), {name: 'auth-storage'}
+    )
+)

@@ -17,7 +17,7 @@ const TabsNavigation: React.FC<TabsNavigationProps> = ({options}) => {
             <nav className="flex">
                 {options.map((option, index) => (
                     <div>
-                        <Link to={option.path} className="uppercase text-sm font-medium text-black">
+                        <Link to={option.path} key={index} className="uppercase text-sm font-medium text-black">
                             {option.value}
                         </Link>
                         {index < options.length - 1 && (

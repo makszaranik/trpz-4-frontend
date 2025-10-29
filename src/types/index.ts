@@ -11,3 +11,9 @@ export default interface IProblem {
     lintersPoints: number;
     submissionsNumberLimit: number;
 }
+
+export enum SubmissionFileType {
+    SOLUTION = "SOLUTION",
+    TEST = "TEST",
+    LINTER = "LINTER",
+}
