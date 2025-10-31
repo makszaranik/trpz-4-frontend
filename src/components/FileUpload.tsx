@@ -7,9 +7,11 @@ import {useNavigate} from "react-router-dom";
 interface FileUploadProps {
     fileType: SubmissionFileType;
     taskId: string;
+    buttonText?: string;
+    onSubmission: boolean
 }
 
-const FileUpload: React.FC<FileUploadProps> = ({fileType, taskId}) => {
+const FileUpload: React.FC<FileUploadProps> = ({fileType, taskId, buttonText='Submit file', onSubmission}) => {
     const [drag, setDrag] = useState(false);
     const [file, setFile] = useState<File | null>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -88,8 +90,12 @@ const FileUpload: React.FC<FileUploadProps> = ({fileType, taskId}) => {
             const submitData = await submitResponse.json();
             const submissionId = submitData.id;
 
-            // 3. Redirect to results page with submissionId
-            navigate(`/problemset/results/${taskId}`, { state: { submissionId } });
+            if (onSubmission) {
+                navigate(`/problemset/results/${taskId}`, {state: {submissionId}});
+            } else {
+                alert("File Submitted Successfully!");
+            }
+
 
         } catch (error) {
             console.error("Submission error:", error);
@@ -114,7 +120,7 @@ const FileUpload: React.FC<FileUploadProps> = ({fileType, taskId}) => {
 
             <div className="flex ml-60 mt-3">
                 <Button variant="dark" onClick={handleSubmitFile} disabled={isSubmitting}>
-                    {isSubmitting ? 'Submitting...' : 'Submit file'}
+                    {isSubmitting ? 'Submitting...' : buttonText}
                 </Button>
             </div>
         </div>

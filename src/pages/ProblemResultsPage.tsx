@@ -93,6 +93,7 @@ const ProblemResultsPage: React.FC = () => {
                 { value: 'tasks', path: '/problemset' },
                 { value: 'submit', path: `/problemset/submit/${taskId}` },
                 { value: 'result', path: `/problemset/results/${taskId}` },
+                { value: 'statistics', path: `/problemset/statistics/${taskId}` },
             ]} />
 
             <div className="max-w-4xl mx-auto p-6">

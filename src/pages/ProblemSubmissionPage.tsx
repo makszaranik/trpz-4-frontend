@@ -24,12 +24,11 @@ const ProblemSubmissionPage: React.FC = () => {
                 { value: 'submit', path: `/problemset/submit/${taskId}` },
                 { value: 'result', path: `/problemset/results/${taskId}` },
                 { value: 'statistics', path: '/problemset/statistics' },
-                { value: 'tests', path: `/problemset/tests/${taskId}` }
             ]} />
 
 
             {token ? (
-                <FileUpload fileType={SubmissionFileType.SOLUTION} taskId={taskId}/>
+                <FileUpload fileType={SubmissionFileType.SOLUTION} taskId={taskId} onSubmission={true}/>
             ) : (
                 <div className="flex mt-10 ml-60 text-xl text-red-600 font-semibold">
                     Login to system to upload solution

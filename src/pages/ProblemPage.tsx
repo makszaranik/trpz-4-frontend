@@ -29,16 +29,22 @@ const ProblemPage: React.FC = () => {
     return (
         <>
             <Navbar/>
-            <Link to='/problemset' className="decoration-none text-2xl ml-60 mt-2 font-bold text-black no-underline">
+
+            <Link
+                to='/problemset'
+                className="decoration-none text-2xl ml-60 mt-2 font-bold text-black no-underline"
+            >
                 CSES Problem Set
             </Link>
 
-            <TabsNavigation options={[
-                { value: 'tasks', path: '/problemset' },
-                { value: 'submit', path: `/problemset/submit/${problem.id}` },
-                { value: 'result', path: `/problemset/results/${problem.id}` },
-                { value: 'statistics', path: '/problemset/statistics' },
-            ]}/>
+            <TabsNavigation
+                options={[
+                    { value: 'tasks', path: '/problemset' },
+                    { value: 'submit', path: `/problemset/submit/${problem.id}` },
+                    { value: 'result', path: `/problemset/results/${problem.id}` },
+                    { value: 'statistics', path: `/problemset/statistics/${problem.id}` },
+                ]}
+            />
 
             <div className="max-w-3xl mx-auto p-6">
                 <Problem
@@ -48,13 +54,13 @@ const ProblemPage: React.FC = () => {
                     memoryRestriction={problem.memoryRestriction}
                     submissionsNumberLimit={problem.submissionsNumberLimit}
                 />
-            </div>
 
-            {problem.solutionTemplateFileId && (
-                <div className="ml-90 mt-1">
-                    <DownloadSolutionTemplate solutionTemplateFileId={problem.solutionTemplateFileId}/>
-                </div>
-            )}
+                {problem.solutionTemplateFileId && (
+                    <div className="mt-4">
+                        <DownloadSolutionTemplate solutionTemplateFileId={problem.solutionTemplateFileId}/>
+                    </div>
+                )}
+            </div>
         </>
     );
 };

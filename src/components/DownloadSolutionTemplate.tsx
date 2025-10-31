@@ -32,7 +32,7 @@ export const DownloadSolutionTemplate: React.FC<TestsPageProps> = ({solutionTemp
         <>
 
             {token && (
-                <div className="w-60 ml-60 mt-6">
+                <div>
                     <Button onClick={handleOnClick} variant="dark" style={{ width: "100%" }}>
                         Download solution template
                     </Button>
